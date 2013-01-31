@@ -1,9 +1,12 @@
 SortableJS plugin for Dokuwiki
 
-By Otto Vainio <plugins@valjakko.net>
+By Otto Vainio <plugins@valjakko.net>, with Stuart Langridge's sorttable script http://www.kryogenix.org/code/browser/sorttable
 
 For all documentation please see http://dokuwiki.org/plugin:sortablejs
 
-Licensed under GPL 2 (http://www.gnu.org/licenses/gpl.html).
+This plugin is licensed under GPL 2 http://www.gnu.org/licenses/gpl.html
 
-Moved onto Github by Sam Wilson <sam@samwilson.id.au>.
+Moved onto Github and adapted for Tablesorter (2.0.5) by Sam Wilson <sam@samwilson.id.au>
+
+Christian Bach's Tablesorter jQuery plugin is dual licensed under MIT or GPL licenses.
+See http://www.tablesorter.com for more information.
