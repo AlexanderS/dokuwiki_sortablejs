@@ -3,5 +3,5 @@ author	Otto Vainio
 email plugins@valjakko.net
 date 2011-05-10
 name Sortable javascript
-desc Make table sortable
+desc Make tables actively sortable, without page reload
 url http://www.dokuwiki.org/plugin:sortablejs

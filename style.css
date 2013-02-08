@@ -1,3 +1,7 @@
+@import url("tablesorter/css/theme.default.css");
+
+table.tablesorter { width:auto }
+
 table.tablesorter thead tr .header {
     background-image: url(img/bg.gif);
     background-repeat: no-repeat;
