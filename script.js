@@ -16,7 +16,8 @@ jQuery(document).ready(function() {
         var sortListOptions = [];
         for (var i=0; i < input.length; i++) {
             var option = input[i];
-            if (option==="sortable") continue;
+            if (option==="sortable" || option.length===0) continue;
+            if (option.indexOf('=')>=0) continue; // ignore format for now
             // Collapse all numbers together to get the column number
             var col_num = parseInt(option.replace(/[^\d]/g, ''));
             // Any 'R' anywhere is 'reverse'

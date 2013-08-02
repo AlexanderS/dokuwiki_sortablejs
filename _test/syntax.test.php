@@ -14,7 +14,22 @@ class syntax_plugin_sortablejs_test extends DokuWikiTest {
         parent::setup();
     }
 
-    function test() {
+    function test_serversort() {
+        $in = "\n^Col1^Col3^Col3^\n"
+            ."|2|two|10/12/2008|\n"
+            ."|3|three|24/6/2013|\n"
+            ."|1|one|25/12/2017|\n";
+        $out = "\n^Col1^Col3^Col3^\n"
+            ."|3|three|24/6/2013|\n"
+            ."|2|two|10/12/2008|\n"
+            ."|1|one|25/12/2017|\n";
+        $plugin = new syntax_plugin_sortablejs();
+        $in = $plugin->get_reordered_table($in, 'r1');
+        $out = p_get_instructions($out);
+        $this->assertEquals($out, $in);
+    }
+
+    function test_options() {
         // No options
         $in = '<sortable></sortable>';
         $out = '<div class="sortable"></div>';
