@@ -3,10 +3,10 @@
  * Sortablejs: Javascript for Sortable HTML tables, using the Tablesorter jQuery
  * plugin.
  *
- * @link http://dokuwiki.org/plugin:sortablejs Plugin documentation
- * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * @author     Otto Vainio
- * @author     Sam Wilson <sam@samwilson.id.au>
+ * @link    http://dokuwiki.org/plugin:sortablejs Plugin documentation
+ * @license GPL 2 (http://www.gnu.org/licenses/gpl.html)
+ * @author  Otto Vainio
+ * @author  Sam Wilson <sam@samwilson.id.au>
  */
 // must be run within Dokuwiki
 if (!defined('DOKU_INC')) die();

@@ -1,7 +1,7 @@
-base	sortablejs
-author	Otto Vainio
-email plugins@valjakko.net
-date 2011-05-10
-name Sortable javascript
-desc Make tables actively sortable, without page reload
-url http://www.dokuwiki.org/plugin:sortablejs
+base   sortablejs
+author Otto Vainio and Sam Wilson
+email  sam@samwilson.id.au
+date   2013-08-05
+name   Sortable javascript
+desc   Make tables actively sortable, without page reload
+url    http://www.dokuwiki.org/plugin:sortablejs
