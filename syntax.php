@@ -16,9 +16,6 @@ require_once DOKU_INC . 'lib/plugins/syntax.php';
 
 class syntax_plugin_sortablejs extends DokuWiki_Syntax_Plugin {
 
-    /** @var array Sort options */
-    private $opts = array();
-
     function getType() {
         return 'substition';
     }
@@ -36,30 +33,59 @@ class syntax_plugin_sortablejs extends DokuWiki_Syntax_Plugin {
     }
 
     function connectTo($mode) {
-        $pattern = '<sortable[^>]*>.*?</sortable>';
-        $this->Lexer->addSpecialPattern($pattern, $mode, 'plugin_sortablejs');
+        $this->Lexer->addEntryPattern(
+            '<sortable\\b[^>]*>(?=.*?</sortable>)',
+            $mode,
+            'plugin_sortablejs');
+    }
+
+    function postConnect() {
+        $this->Lexer->addExitPattern(
+            '</sortable>',
+            'plugin_sortablejs');
     }
 
     function handle($match, $state, $pos, &$handler) {
-        if ($state == DOKU_LEXER_SPECIAL) {
-            $pattern = '|<sortable([^>]*)>(.*)</sortable>|s';
-            preg_match_all($pattern, $match, $matches);
-            $options = preg_replace('|["\']|', '', $matches[1][0]);
-            return array($options, $matches[2][0]);
-            break;
+        switch ($state) {
+            case DOKU_LEXER_ENTER:
+                return array($state, $match);
+                break;
+            case DOKU_LEXER_MATCHED:
+                return array($state, $match);
+                break;
+            case DOKU_LEXER_UNMATCHED:
+                return array($state, $match);
+                break;
+            case DOKU_LEXER_EXIT:
+                return array($state, '');
+                break;
         }
         return array();
     }
 
     function render($mode, &$renderer, $data) {
-        list($opt_string, $table) = $data;
+        list($state, $match) = $data;
 
-        if ($mode == 'xhtml') $renderer->doc .= '<div class="sortable'.$opt_string.'">';
-        if ($mode == 'odt') $renderer->p_close();
+        switch ($state) {
+            case DOKU_LEXER_ENTER:
+                if ($mode == 'xhtml')
+                    if (preg_match('/<sortable\\b([^>]+)>/', $match, $matches)) {
+                        $renderer->doc .= '<div class="sortable" data-sort="' . str_replace("'", '&quot;', trim($matches[1])) . '">';
+                    }
+                    else {
+                        $renderer->doc .= '<div class="sortable">';
+                    }
+                break;
 
+            case DOKU_LEXER_UNMATCHED:
+                $renderer->doc .= $renderer->_xmlEntities($match);
+                break;
 
-        if ($mode == 'xhtml') $renderer->doc .= '</div>';
-        if ($mode == 'odt') $renderer->p_open();
+            case DOKU_LEXER_EXIT:
+                if ($mode == 'xhtml')
+                    $renderer->doc .= '</div>';
+                break;
+        }
 
         return true;
     }
