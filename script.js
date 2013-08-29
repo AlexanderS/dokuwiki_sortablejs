@@ -1,4 +1,4 @@
-/* DOKUWIKI:include tablesorter/js/jquery.tablesorter.js */
+/* DOKUWIKI:include scripts/jquery.tablesorter.js */
 
 jQuery(document).ready(function() {
     jQuery("div.sortable").each(function() {
