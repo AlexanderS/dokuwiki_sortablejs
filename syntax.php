@@ -78,7 +78,10 @@ class syntax_plugin_sortablejs extends DokuWiki_Syntax_Plugin {
                 break;
 
             case DOKU_LEXER_UNMATCHED:
-                $renderer->doc .= $renderer->_xmlEntities($match);
+                if ($mode == 'xhtml')
+                    $renderer->doc .= $renderer->_xmlEntities($match);
+                else
+                    $renderer->doc .= $match;
                 break;
 
             case DOKU_LEXER_EXIT:
