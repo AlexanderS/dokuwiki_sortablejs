@@ -1,7 +1,7 @@
 base   sortablejs
-author Otto Vainio and Sam Wilson
-email  sam@samwilson.id.au
-date   2013-08-05
+author Alexander Sulfrian 
+email  alex@spline.inf.fu-berlin.de
+date   2018-11-19
 name   Sortable javascript
 desc   Make tables actively sortable, without page reload
 url    http://www.dokuwiki.org/plugin:sortablejs
